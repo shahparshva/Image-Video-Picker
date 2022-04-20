@@ -6,6 +6,15 @@ This library is created to make image and video selection much easier
 
 
 
+## Features
+
+- Easy to use
+- Single/multiple image selection with runtime permission 
+- Single/multiple video selection with runtime permission 
+- Option to choose to use crop or not 
+
+
+
 ## Demo
 
 ![Alt Text](https://github.com/shahparshva/Image-Video-Picker/blob/master/ezgif.com-gif-maker.gif)
@@ -65,3 +74,19 @@ CropSquare,CropRectangle,CropCircle
 ```
 
 
+
+## Contributing
+
+Contributions are always welcome!
+
+See `contributing.md` for ways to get started.
+
+Please adhere to this project's `code of conduct`.
+
+
+## Authors
+
+- [@shahparshva](https://github.com/shahparshva)
+
+
+## Happu Coding ... :)
