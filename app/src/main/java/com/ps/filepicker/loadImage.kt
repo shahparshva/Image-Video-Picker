@@ -1,4 +1,4 @@
-package com.parshva.filepicker
+package com.ps.filepicker
 
 import android.content.Context
 import android.widget.ImageView

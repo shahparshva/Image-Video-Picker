@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.parshva.filepicker">
+    package="com.ps.filepicker">
 
 
     <uses-feature
@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FilePicker">
         <activity
-            android:name="com.parshva.filepicker.MainActivity"
+            android:name="com.ps.filepicker.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

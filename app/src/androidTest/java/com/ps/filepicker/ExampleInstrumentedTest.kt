@@ -1,4 +1,4 @@
-package com.parshva.filepicker
+package com.ps.filepicker
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

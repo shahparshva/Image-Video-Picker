@@ -1,4 +1,4 @@
-package com.parshva.filepickerlib
+package com.ps.filepickerlib
 
 
 import android.Manifest
@@ -41,7 +41,7 @@ import java.util.*
 
 /*Created by Parshva Shah Shah on 01-01-2022*/
 
-class MediaSelectHelper(private val activity: AppCompatActivity) {
+class MediaSelectHelper(private val activity: AppCompatActivity) : MediaSelectOptions {
 
 
     private var canSelectMultipleFlag: Boolean = false
@@ -237,8 +237,8 @@ class MediaSelectHelper(private val activity: AppCompatActivity) {
 
 
 
-        canSelectMultiple(false)
-        canSelectMultipleVideo(false)
+        isSelectMultipleImage(false)
+        isSelectMultipleVideo(false)
     }
 
 
@@ -248,7 +248,7 @@ class MediaSelectHelper(private val activity: AppCompatActivity) {
         this.mMediaSelector = mMediaSelector
     }
 
-    fun selectOptionsForImagePicker(isCrop1: Boolean, cropType: String = Constant.CropSquare) {
+    override fun selectOptionsForImagePicker(isCrop1: Boolean, cropType: String) {
         isSelectingVideo = false
         this.cropType = cropType
         this.isCrop = isCrop1
@@ -272,7 +272,7 @@ class MediaSelectHelper(private val activity: AppCompatActivity) {
     }
 
 
-    fun selectVideo() {
+    override fun selectVideo() {
         isSelectingVideo = true
         if (ContextCompat.checkSelfPermission(
                 activity,
@@ -287,7 +287,11 @@ class MediaSelectHelper(private val activity: AppCompatActivity) {
 
 
     /*To show it as popup menu*/
-    fun showImageMenu(view: View, isCrop1: Boolean, cropType: String = Constant.CropSquare) {
+    override fun selectImageWithMenu(
+        view: View,
+        isCrop1: Boolean,
+        cropType: String
+    ) {
         isSelectingVideo = false
         this.cropType = cropType
         this.isCrop = isCrop1
@@ -384,7 +388,7 @@ class MediaSelectHelper(private val activity: AppCompatActivity) {
         }
     }
 
-    fun canSelectMultiple(canSelect: Boolean) {
+    override fun isSelectMultipleImage(canSelect: Boolean) {
         canSelectMultipleFlag = canSelect
         if (canSelect) {
             galleryIntent = Intent(Intent.ACTION_GET_CONTENT)
@@ -404,7 +408,7 @@ class MediaSelectHelper(private val activity: AppCompatActivity) {
         }
     }
 
-    fun canSelectMultipleVideo(canSelect: Boolean) {
+    override fun isSelectMultipleVideo(canSelect: Boolean) {
         canSelectMultipleVideo = canSelect
         if (canSelect) {
             canSelectMultipleVideo = canSelect

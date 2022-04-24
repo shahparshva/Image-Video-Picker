@@ -1,4 +1,4 @@
-package com.parshva.filepicker
+package com.ps.filepickerlib
 
 import org.junit.Test
 

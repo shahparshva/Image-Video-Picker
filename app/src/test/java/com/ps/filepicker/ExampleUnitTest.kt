@@ -1,9 +1,14 @@
-package com.parshva.filepickerlib
+package com.ps.filepicker
 
 import org.junit.Test
 
 import org.junit.Assert.*
-
+allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
 /**
  * Example local unit test, which will execute on the development machine (host).
  *

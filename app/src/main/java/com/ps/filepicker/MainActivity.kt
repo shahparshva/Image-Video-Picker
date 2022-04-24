@@ -1,13 +1,12 @@
-package com.parshva.filepicker
+package com.ps.filepicker
 
 import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatImageView
-import androidx.appcompat.widget.AppCompatTextView
-import com.parshva.filepickerlib.MediaSelectHelper
-import com.parshva.filepickerlib.MediaSelector
+import com.ps.filepickerlib.MediaSelectHelper
+import com.ps.filepickerlib.MediaSelector
 
 class MainActivity : AppCompatActivity() {
     private lateinit var imageView: AppCompatImageView
@@ -42,14 +41,21 @@ class MainActivity : AppCompatActivity() {
         textViewSelectImage = findViewById(R.id.textViewSelectImage)
         textViewSelectVideo = findViewById(R.id.textViewSelectVideo)
         textViewSelectImage.setOnClickListener {
-            filePicker.canSelectMultiple(false)
-            filePicker.showImageMenu(it,true)
-//            filePicker.selectOptionsForImagePicker(true)
+            filePicker.isSelectMultipleImage(false)
+            filePicker.selectImageWithMenu(
+                it,
+                isCrop1 = true,
+                cropType = MediaSelectHelper.Constant.CropSquare
+            )
+            /*filePicker.selectOptionsForImagePicker(
+                isCrop1 = true,
+                cropType = MediaSelectHelper.Constant.CropSquare
+            )*/
         }
 
         textViewSelectVideo.setOnClickListener {
 
-            filePicker.canSelectMultipleVideo(false)//set true if allow multiple
+            filePicker.isSelectMultipleVideo(false)//set true if allow multiple
             filePicker.selectVideo()
         }
     }
