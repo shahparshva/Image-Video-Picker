@@ -17,6 +17,10 @@
         <activity
             android:name="com.ps.filepicker.MainActivity"
             android:exported="true">
+
+        </activity>
+        <activity android:name=".SampleActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -54,8 +54,11 @@ class MediaSelectHelper(private val activity: AppCompatActivity) : MediaSelectOp
     private var videoIntent: Intent? = null
     private val permission = arrayOf(
         Manifest.permission.READ_EXTERNAL_STORAGE,
-        Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA
+        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+        Manifest.permission.CAMERA
     )
+
+
 
     object Constant {
         const val CropSquare = "CropSquare"
@@ -384,6 +387,8 @@ class MediaSelectHelper(private val activity: AppCompatActivity) : MediaSelectOp
         ) {
             activityResultLauncherGallery.launch(permission)
         } else {
+//            galleryResult.launch(galleryIntent)
+            isSelectMultipleImage(canSelectMultipleFlag)
             galleryResult.launch(galleryIntent)
         }
     }
@@ -392,7 +397,7 @@ class MediaSelectHelper(private val activity: AppCompatActivity) : MediaSelectOp
         canSelectMultipleFlag = canSelect
         if (canSelect) {
             galleryIntent = Intent(Intent.ACTION_GET_CONTENT)
-            galleryIntent!!.type = "*/*"
+            galleryIntent!!.type = "image/*"
             galleryIntent!!.putExtra(
                 Intent.EXTRA_MIME_TYPES,
                 arrayOf("image/jpeg", "image/png")

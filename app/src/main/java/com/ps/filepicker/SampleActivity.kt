@@ -9,52 +9,27 @@ import android.view.WindowManager
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.AppCompatButton
-import androidx.appcompat.widget.AppCompatImageView
-import com.ps.filepickerlib.FileSelector
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import com.ps.filepickerlib.MediaSelectorBuilder
-import com.ps.filepickerlib.getFileType
 import java.io.File
-import java.lang.ref.WeakReference
 
 
-class MainActivity : AppCompatActivity(), MediaSelectorBuilder {
-    private lateinit var imageView: AppCompatImageView
-    private lateinit var textViewSelectImage: AppCompatButton
-    private lateinit var textViewSelectVideo: AppCompatButton
-    private val filePicker: FileSelector =
-        FileSelector.Builder()
-            .setActivityReference(WeakReference(this))
-            .setCropType(FileSelector.CropType.CropSquare)
-            .setAllowCrop(false)
-            .setAllowMultiple(true)
-            .setMediaSelectCallBack(this)
-            .build()
+class SampleActivity : AppCompatActivity(), MediaSelectorBuilder {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_sample)
         window.setFlags(WindowManager.LayoutParams.FLAG_SECURE,
             WindowManager.LayoutParams.FLAG_SECURE)
 
 
-        imageView = findViewById(R.id.imageViewMain)
-        textViewSelectImage = findViewById(R.id.textViewSelectImage)
-        textViewSelectVideo = findViewById(R.id.textViewSelectVideo)
+        val manager: FragmentManager = supportFragmentManager
+        val transaction: FragmentTransaction = manager.beginTransaction()
+        transaction.replace(R.id.container, SampleFragmentFragment())
+        transaction.commit()
 
-
-        textViewSelectImage.setOnClickListener {
-            filePicker.selectOptionsForImagePicker()
-        }
-
-        textViewSelectVideo.setOnClickListener {
-
-            /*filePicker.isSelectMultipleVideo(true)//set true if allow multiple
-            filePicker.selectVideo()*/
-
-            selectPdf(false)
-        }
     }
 
 
@@ -95,18 +70,5 @@ class MainActivity : AppCompatActivity(), MediaSelectorBuilder {
         }
         pdfPickerIntent.launch(pdfIntent)
     }
-
-    override fun onSingleFileSelected(uri: Uri) {
-
-        uri.path?.let { Log.e("Path", it) }
-        Log.e("extension", uri.getFileType())
-
-        imageView.loadImage(this@MainActivity, uri)
-    }
-
-    override fun onMultipleFileSelected(uriArrayList: ArrayList<Uri>) {
-        imageView.loadImage(this@MainActivity, uriArrayList[0])
-    }
-
 
 }
