@@ -13,7 +13,26 @@ This library is created to make image and video selection much easier
 - Single/multiple video selection with runtime permission 
 - Option to choose to use crop or not 
 
+## How to Add
+Project level gradle file
 
+
+```bash
+   allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+```
+
+App level gradle file
+```bash
+	dependencies {
+	        implementation 'com.github.shahparshva:Image-Video-Picker:0.1.1'
+	}
+
+```
 
 ## Demo
 
@@ -53,13 +72,21 @@ How to use this amazing lib and save your time
 ## Select Image 
 ```bash
   //To change wather want single image selection or multiple 
-  filePicker.canSelectMultiple(false)
+    filePicker.isSelectMultipleImage(false)
+
 
   //If you want to show popup dilaog for selection for Gallery and Camera
-  filePicker.showImageMenu(it,isCrop1=true,cropType = MediaSelectHelper.Constant.CropSquare).
-  
+   filePicker.selectImageWithMenu(
+                it,
+                isCrop1 = true,
+                cropType = MediaSelectHelper.Constant.CropSquare
+            )
+
   //else simple alert dialog 
-  filePicker.selectOptionsForImagePicker(isCrop1=true,cropType = MediaSelectHelper.Constant.CropSquare)
+  filePicker.selectOptionsForImagePicker(
+                isCrop1 = true,
+                cropType = MediaSelectHelper.Constant.CropSquare
+            )
 ```
 
 There are currently 3 crop type used in this lib
@@ -69,7 +96,7 @@ CropSquare,CropRectangle,CropCircle
 ## Select Video 
 ```bash
   //To change wather want single video selection or multiple 
-    filePicker.canSelectMultipleVideo(false)//set true if allow multiple
+    filePicker.isSelectMultipleVideo(false)//set true if allow multiple
     filePicker.selectVideo()
 ```
 
