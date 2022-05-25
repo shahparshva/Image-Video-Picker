@@ -514,7 +514,7 @@ class FileSelector private constructor(val builder: Builder) : FileSelectorOptio
     /**
      * Open camera to click image
      */
-    private fun openCamera() {
+    override fun openCamera() {
 
         if (ContextCompat.checkSelfPermission(
                 activity.get()!!,
@@ -567,7 +567,7 @@ class FileSelector private constructor(val builder: Builder) : FileSelectorOptio
     /**
      * Open gallery for select single image
      */
-    private fun openGallery() {
+    override fun openGallery() {
         if (ContextCompat.checkSelfPermission(
                 activity.get()!!,
                 Manifest.permission.READ_EXTERNAL_STORAGE
